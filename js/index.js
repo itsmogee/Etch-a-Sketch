@@ -45,6 +45,8 @@ gridButton.addEventListener("click", () => {
   } else if (size >= MAXSIZE) {
     alert("Defaulting to size 100");
     size = 100;
+  } else if (size <= 0) {
+    alert("Invalid size entered");
   }
   createGrid(size);
 })
