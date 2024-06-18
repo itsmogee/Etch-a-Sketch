@@ -1,10 +1,7 @@
 #container {
   display: flex;
-  width: 400px;
-  /*justify-content: center;*/
-  align: center;
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
-  margin-top : 100px;
+  margin-top : 50px;
 }

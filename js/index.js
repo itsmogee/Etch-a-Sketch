@@ -1,17 +1,26 @@
 const body = document.querySelector("body");
 body.style.backgroundColor = "black";
-const container = document.querySelector("#container")
+const container = document.querySelector("#container");
+
+let containerWidth = 85;
+let gridSize = 64;
+
+container.style.width = (containerWidth) + "vw";
+
+const numGrids = gridSize * gridSize;
+let blockSize = (containerWidth) / gridSize;
 
 function createGrid() {
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < numGrids; i++) {
     const gridElement = document.createElement("div");
-    gridElement.style.width = "100px";
-    gridElement.style.height = "100px";
-    gridElement.textContent = "Grid : " + parseInt(i + 1);
+    gridElement.className = "GridItem";
+    gridElement.style.display = "flex";
+    gridElement.style.width = blockSize + "vw";
+    gridElement.style.height = blockSize + "vh";
     gridElement.style.backgroundColor = "orange";
-    gridElement.style.borderColor = "white";
-    gridElement.style.borderWidth = "thin";
-    gridElement.style.borderStyle = "solid";
+    gridElement.style.padding = 0;
+    gridElement.style.margin = 0;
+    gridElement.style.gap = 0;
     container.appendChild(gridElement);
   };
 };
@@ -25,6 +34,5 @@ divItems.forEach(element => {
     element.style.backgroundColor = "purple";
   });
   element.addEventListener("mouseout", () => {
-    element.style.backgroundColor = "orange";
   })
 });
