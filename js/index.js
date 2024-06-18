@@ -4,7 +4,7 @@ const container = document.querySelector("#container");
 const gridButton = document.querySelector("#changeGrid");
 
 const MAXSIZE = 100;
-let containerWidth = 85;
+let containerWidth = 52;
 container.style.width = (containerWidth) + "vw";
 
 
@@ -16,7 +16,7 @@ function createGrid(gridSize = 16) {
     gridElement.className = "GridItem";
     gridElement.style.display = "flex";
     gridElement.style.width = blockSize + "vw";
-    gridElement.style.height = blockSize + "vh";
+    gridElement.style.height = blockSize * (16 / 9) + "vh";
     gridElement.style.backgroundColor = "orange";
     gridElement.style.padding = 0;
     gridElement.style.margin = 0;
