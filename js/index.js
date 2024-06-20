@@ -21,7 +21,7 @@ function createGrid(gridSize = 16) {
   for (let i = 0; i < numGrids; i++) {
     const gridElement = document.createElement("div");
     gridElement.className = "GridItem";
-    gridElement.title = i;
+    gridElement.id = i;
     gridElement.style.display = "flex";
     //gridElement.style.flexGrow = 1;
     gridElement.style.width = blockSize + "px";
@@ -69,20 +69,12 @@ function rgbRandomizer(opacityValues, gridElement) {
   let g = Math.floor(Math.random() * 255);
   let b = Math.floor(Math.random() * 255);
 
-  if (opacityValues[gridElement.title] > 0) {
-    opacityValues[gridElement.title] -= 0.1;
+  if (opacityValues[gridElement.id] > 0) {
+    opacityValues[gridElement.id] -= 0.1;
   }
 
   return (
-    "rgba(" +
-    r +
-    "," +
-    g +
-    "," +
-    b +
-    "," +
-    opacityValues[gridElement.title] +
-    ")"
+    "rgba(" + r + "," + g + "," + b + "," + opacityValues[gridElement.id] + ")"
   );
 }
 
