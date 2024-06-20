@@ -1,6 +1,7 @@
 const body = document.querySelector("body");
 const container = document.querySelector("#sketchpad");
 const gridButton = document.querySelector("#changeGrid");
+const clearButton = document.querySelector("#clearButton");
 
 const MAXSIZE = 100;
 let containerWidth = 1920 / 3.5;
@@ -14,6 +15,8 @@ value.style.fontSize = "24px";
 value.style.fontFamily = "sans-serif";
 slidecontainer.appendChild(value);
 
+let gridElements = [];
+
 function createGrid(gridSize = 16) {
   let blockSize = containerWidth / gridSize;
   let opacityValues = [];
@@ -23,7 +26,6 @@ function createGrid(gridSize = 16) {
     gridElement.className = "GridItem";
     gridElement.id = i;
     gridElement.style.display = "flex";
-    //gridElement.style.flexGrow = 1;
     gridElement.style.width = blockSize + "px";
     gridElement.style.height = blockSize + "px";
     gridElement.style.backgroundColor = "white";
@@ -38,8 +40,17 @@ function createGrid(gridSize = 16) {
       );
     });
     container.appendChild(gridElement);
+    gridElements.push(gridElement);
   }
 }
+
+clearButton.addEventListener("click", () => {
+  if (gridElements.length > 0) {
+    gridElements.forEach((element) => {
+      element.style.backgroundColor = "white";
+    });
+  }
+});
 
 function deleteGrid() {
   var element = document.getElementById("sketchpad");
