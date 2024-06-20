@@ -1,15 +1,21 @@
 const body = document.querySelector("body");
-body.style.backgroundColor = "rgb(0, 60, 50)";
-const container = document.querySelector("#container");
+const container = document.querySelector("#sketchpad");
 const gridButton = document.querySelector("#changeGrid");
 
 const MAXSIZE = 100;
-let containerWidth = 40;
-container.style.width = (containerWidth) + "vw";
+let containerWidth = 1920 / 3.5;
+container.style.width = containerWidth + "px";
 
+var slider = document.getElementById("gridSlider");
+var slidecontainer = document.querySelector(".slide-container");
+let value = document.createElement("div");
+value.textContent = slider.value + " x " + slider.value;
+value.style.fontSize = "24px";
+value.style.fontFamily = "sans-serif";
+slidecontainer.appendChild(value);
 
 function createGrid(gridSize = 16) {
-  let blockSize = (containerWidth) / gridSize;
+  let blockSize = containerWidth / gridSize;
   let opacityValues = [];
   const numGrids = gridSize * gridSize;
   for (let i = 0; i < numGrids; i++) {
@@ -17,26 +23,30 @@ function createGrid(gridSize = 16) {
     gridElement.className = "GridItem";
     gridElement.title = i;
     gridElement.style.display = "flex";
-    gridElement.style.width = blockSize + "vw";
-    gridElement.style.height = blockSize * (16 / 9) + "vh";
+    //gridElement.style.flexGrow = 1;
+    gridElement.style.width = blockSize + "px";
+    gridElement.style.height = blockSize + "px";
     gridElement.style.backgroundColor = "white";
     gridElement.style.padding = 0;
     gridElement.style.margin = 0;
     gridElement.style.gap = 0;
     opacityValues.push(1);
     gridElement.addEventListener("mouseenter", () => {
-      gridElement.style.backgroundColor = rgbRandomizer(opacityValues, gridElement);
-    })
+      gridElement.style.backgroundColor = rgbRandomizer(
+        opacityValues,
+        gridElement,
+      );
+    });
     container.appendChild(gridElement);
-  };
-};
+  }
+}
 
 function deleteGrid() {
-  var element = document.getElementById("container");
+  var element = document.getElementById("sketchpad");
   while (element.firstChild) {
     element.firstChild.remove();
   }
-};
+}
 
 createGrid();
 
@@ -45,14 +55,14 @@ gridButton.addEventListener("click", () => {
   deleteGrid();
   if (!Number.isInteger(size)) {
     alert("Entered value is not a number");
-  } else if (size >= MAXSIZE) {
+  } else if (size > MAXSIZE) {
     alert("Defaulting to size 100");
     size = 100;
   } else if (size <= 0) {
     alert("Invalid size entered");
   }
   createGrid(size);
-})
+});
 
 function rgbRandomizer(opacityValues, gridElement) {
   let r = Math.floor(Math.random() * 255);
@@ -63,5 +73,21 @@ function rgbRandomizer(opacityValues, gridElement) {
     opacityValues[gridElement.title] -= 0.1;
   }
 
-  return "rgba(" + r + "," + g + "," + b + "," + opacityValues[gridElement.title] + ")";
+  return (
+    "rgba(" +
+    r +
+    "," +
+    g +
+    "," +
+    b +
+    "," +
+    opacityValues[gridElement.title] +
+    ")"
+  );
 }
+
+slider.oninput = function () {
+  value.textContent = this.value + " x " + this.value;
+  deleteGrid();
+  createGrid(parseInt(value.textContent));
+};
