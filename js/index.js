@@ -15,7 +15,7 @@ let darkening = false;
 let grid = false;
 
 const MAXSIZE = 100;
-let containerWidth = 1920.0 / 4.0;
+let containerWidth = 1920.0 / 3.0;
 
 var slider = document.getElementById("gridSlider");
 var slidecontainer = document.querySelector(".slide-container");
@@ -229,7 +229,7 @@ toggleGridButton.onclick = () => {
     grid = true;
     toggleGridButton.style.outline = "5px solid #b8bb26";
     gridElements.forEach((element) => {
-      element.style.outline = "1px solid black";
+      element.style.outline = "1px solid #b8bb26";
     });
   } else {
     grid = false;

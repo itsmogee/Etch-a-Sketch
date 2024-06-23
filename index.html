@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Etch-A-Sketch</title>
-    <script src="./js/index.js" defer></script>
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
-  </head>
-  <body>
-    <div class="container" id="container-left">
-      <div class="grid">
-        <div class="header">
-          Grid
-        </div>
-        <div class="buttons">
-          <button class="button" id="changeGrid" type="button"><span class="material-symbols-outlined">
-              grid_on
-            </span></button>
-          <button class="button" id="toggleGrid" type="button"><span class="material-symbols-outlined">
-              grid_view
-            </span></button>
-        </div>
-        <div class="slide-container">
-          <input class="slider" id="gridSlider" type="range" min="1" max="100" value="50" ></input>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Etch-A-Sketch</title>
+  <script src="./js/index.js" defer></script>
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+</head>
+
+<body>
+  <div class="container" id="container-left">
+    <div class="grid">
+      <div class="header">
+        G r i d
       </div>
-      <button class="button" id="clearButton" type="button">C L E A R</button>
+      <div class="buttons">
+        <button class="button" id="changeGrid" type="button"><span class="material-symbols-outlined">
+            grid_on
+          </span></button>
+        <button class="button" id="toggleGrid" type="button"><span class="material-symbols-outlined">
+            grid_view
+          </span></button>
+      </div>
+      <div class="slide-container">
+        <input class="slider" id="gridSlider" type="range" min="1" max="100" value="50"></input>
+      </div>
+      <button class="button" id="clearButton" type="button">CLEAR</button>
     </div>
     <div class="paint">
       <div class="header">
-        Paint
+        P a i n t
       </div>
       <div class="buttons">
         <div class="colorcontainer">
@@ -41,17 +43,18 @@
             </span>
           </button>
           <button class="button" id="rainbowBrush" type="button">Rainbow</button>
-          <button class="button" id="darken" type="button">Darkening</button>
+          <button class="button" id="darken" type="button">Darken</button>
         </div>
       </div>
     </div>
   </div>
   <div class="container" id="container-right">
     <div id="etchHeader" class="header">
-      Etch-A-Sketch
+      E t c h - A - S k e t c h
     </div>
     <div id="sketchpad">
     </div>
   </div>
 </body>
+
 </html>

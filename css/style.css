@@ -68,14 +68,14 @@ body {
   aspect-ratio: 1;
   flex-wrap: wrap;
   margin: auto;
-  width: 480px;
-  height: 480px;
+  width: 800px;
+  height: 800px;
 }
 
 
 #container-right {
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
   background-color: #504945;
   border: solid;
   border-color: #b8bb26;
@@ -144,7 +144,7 @@ body {
 .header {
   display: flex;
   justify-content: space-around;
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
   color: #d5c4a1;
 }
