@@ -65,17 +65,17 @@ body {
 #sketchpad {
   display: flex;
   flex-direction: row;
+  aspect-ratio: 1;
   flex-wrap: wrap;
   margin: auto;
-  border: dotted;
-  border-width: 5px;
-  border-color: #fe8019;
+  width: 480px;
+  height: 480px;
 }
 
 
 #container-right {
-  width: 700px;
-  height: 700px;
+  width: 800px;
+  height: 800px;
   background-color: #504945;
   border: solid;
   border-color: #b8bb26;
