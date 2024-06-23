@@ -13,8 +13,7 @@ let rainbowChoice = true;
 let darkening = false;
 
 const MAXSIZE = 100;
-let containerWidth = 1920 / 3.5;
-container.style.width = containerWidth + "px";
+let containerWidth = 1920.0 / 4.0;
 
 var slider = document.getElementById("gridSlider");
 var slidecontainer = document.querySelector(".slide-container");
@@ -30,15 +29,14 @@ value.style.fontFamily = "sans-serif";
 slidecontainer.appendChild(value);
 
 function createGrid(gridSize = 16) {
-  let blockSize = containerWidth / gridSize;
   const numGrids = gridSize * gridSize;
   for (let i = 0; i < numGrids; i++) {
     const gridElement = document.createElement("div");
     gridElement.className = "GridItem";
     gridElement.id = i;
     gridElement.style.display = "flex";
-    gridElement.style.width = blockSize + "px";
-    gridElement.style.height = blockSize + "px";
+    gridElement.style.width = `calc(100% / ${gridSize})`;
+    gridElement.style.height = `calc(100% / ${gridSize})`;
     gridElement.style.backgroundColor = "white";
     gridElement.style.padding = 0;
     gridElement.style.margin = 0;
