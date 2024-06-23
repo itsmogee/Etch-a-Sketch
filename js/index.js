@@ -6,11 +6,13 @@ const paintBrush = document.getElementById("paintBrush");
 const eraser = document.getElementById("eraser");
 const rainbowBrush = document.getElementById("rainbowBrush");
 const darkenButton = document.getElementById("darken");
+const toggleGridButton = document.getElementById("toggleGrid");
 
 // --------------  Useful variables--------------------------------------------
 let paintBrushColor = "white";
 let rainbowChoice = true;
 let darkening = false;
+let grid = false;
 
 const MAXSIZE = 100;
 let containerWidth = 1920.0 / 4.0;
@@ -41,6 +43,9 @@ function createGrid(gridSize = 16) {
     gridElement.style.padding = 0;
     gridElement.style.margin = 0;
     gridElement.style.gap = 0;
+    if (grid) {
+      gridElement.style.outline = "1px solid black";
+    }
     opacityValues.push(1);
     if (rainbowChoice) {
       gridElement.addEventListener("mouseenter", rgbRandomizer);
@@ -50,6 +55,8 @@ function createGrid(gridSize = 16) {
     container.appendChild(gridElement);
     gridElements.push(gridElement);
   }
+  value.textContent = gridSize + " x " + gridSize;
+  slider.value = gridSize;
 }
 
 function deleteGrid() {
@@ -137,6 +144,7 @@ eraser.onclick = function () {
   eraser.style.borderColor = "#b8bb26";
   eraser.style.borderWidth = "5px";
 
+  paintBrush.style.border = "none";
   rainbowBrush.style.border = "none";
 
   darkenButton.style.border = "none";
@@ -154,9 +162,14 @@ eraser.onclick = function () {
 
 const paintBrushFx = function () {
   rainbowChoice = false;
+  darkening = false;
 
+  paintBrush.style.border = "solid";
+  paintBrush.style.borderWidth = "5px";
+  paintBrush.style.borderColor = "#b8bb26";
   rainbowBrush.style.border = "none";
   darkenButton.style.border = "none";
+  eraser.style.border = "none";
 
   removeListeners();
   gridElements.forEach((element) => {
@@ -171,6 +184,7 @@ rainbowBrush.onclick = function () {
   rainbowBrush.style.border = "solid";
   rainbowBrush.style.borderColor = "#b8bb26";
   rainbowBrush.style.borderWidth = "5px";
+  paintBrush.style.border = "none";
 
   darkening = false;
 
@@ -181,6 +195,7 @@ rainbowBrush.onclick = function () {
 
   rainbowChoice = true;
   gridElements.forEach((element) => {
+    opacityValues[element.id] = 1;
     element.addEventListener("mouseenter", rgbRandomizer);
   });
 };
@@ -208,3 +223,19 @@ function removeListeners() {
     });
   }
 }
+
+toggleGridButton.onclick = () => {
+  if (!grid) {
+    grid = true;
+    toggleGridButton.style.outline = "5px solid #b8bb26";
+    gridElements.forEach((element) => {
+      element.style.outline = "1px solid black";
+    });
+  } else {
+    grid = false;
+    toggleGridButton.style.outline = "none";
+    gridElements.forEach((element) => {
+      element.style.outline = "none";
+    });
+  }
+};
